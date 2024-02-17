@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: #e3f9ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .calculator {
+            background-color: blueviolet;
+            height: 400px;
+            width: 400px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cal-button {
+            width: 70px;
+            height: 50px;
+            background-color: antiquewhite;
+            margin: 5px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .calculator2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .calculator2 input[type="button"] {
+            width: 70px;
+            height: 50px;
+            background-color: #25426b;
+            color: white;
+            margin: 5px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .head {
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculator</h1>
+        <div class="calculator">
+            <div class="display">
+                <input type="text" id="display" id="display" class="cal-button" readonly>
+            </div>
+            <div class="calculator2">
+                <div class="row">
+                    <input type="button" value="7" class="cal-button" onclick="addToDisplay('7')">
+                    <input type="button" value="8" class="cal-button" onclick="addToDisplay('8')">
+                    <input type="button" value="9" class="cal-button" onclick="addToDisplay('9')">
+                    <input type="button" value="+" class="cal-button" onclick="addToDisplay('+')">
+                </div>
+                <div class="row">
+                    <input type="button" value="6" class="cal-button" onclick="addToDisplay('6')">
+                    <input type="button" value="5" class="cal-button" onclick="addToDisplay('5')">
+                    <input type="button" value="4" class="cal-button" onclick="addToDisplay('4')">
+                    <input type="button" value="-" class="cal-button" onclick="addToDisplay('-')">
+                </div>
+                <div class="row">
+                    <input type="button" value="3" class="cal-button" onclick="addToDisplay('3')">
+                    <input type="button" value="2" class="cal-button" onclick="addToDisplay('2')">
+                    <input type="button" value="1" class="cal-button" onclick="addToDisplay('1')">
+                    <input type="button" value="/" class="cal-button" onclick="addToDisplay('/')">
+                </div>
+                <div class="row">
+                    <input type="button" value="." class="cal-button" onclick="addDecimal()">
+                    <input type="button" value="0" class="cal-button" onclick="addToDisplay('0')">
+                    <input type="button" value="=" class="cal-button" onclick="calculate()">
+                    <input type="button" value="*" class="cal-button" onclick="addToDisplay('*')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function addDecimal() {
+            let currentValue = document.getElementById('display').value;
+            if (!currentValue.includes('.')) {
+                document.getElementById('display').value += '.';
+            }
+        }
+
+        function calculate() {
+            let expression = document.getElementById('display').value;
+            let result = eval(expression);
+            document.getElementById('display').value = result;
+        }
+    </script>
+</body>
+</html>
